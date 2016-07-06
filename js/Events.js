@@ -21,57 +21,64 @@ $('#myform').on('submit', function(){
 	 var results = eventsData;
 
 	 //for loop to populate the search results
-	 for (var i = 0; i < 5; i++) {
-	
-	 	var wellSection = $("<div>");
-		wellSection.addClass('well');
+		 for (var i = 0; i < 5; i++) {
+		
+		 	var wellSection = $("<div>");
+			wellSection.addClass('well');
 
-		//assigning names to variables that are to be returned
-		var eventName = JSON.stringify(results._embedded.events[i].name);
-		var date = JSON.stringify(results._embedded.events[i].dates.start.localDate);
-		var time = JSON.stringify(results._embedded.events[i].dates.start.localTime);
-		var venue = JSON.stringify(results._embedded.events[i]._embedded.venues[0].name);
-		var city = JSON.stringify(results._embedded.events[i]._embedded.venues[0].city.name);
-		var state = JSON.stringify(results._embedded.events[i]._embedded.venues[0].state.stateCode);
-		var event = JSON.stringify(results._embedded.events[i].url);
-        
-        //dynamically creating tags and appending return results to page    
-		var newP = $("<p>");
-		newP.append(eventName);
-		wellSection.append(newP);
+			
+			//assigning names to variables that are to be returned
+			var eventName = JSON.stringify(results._embedded.events[i].name);
+			var date = JSON.stringify(results._embedded.events[i].dates.start.localDate);
+			var time = JSON.stringify(results._embedded.events[i].dates.start.localTime);
+			var venue = JSON.stringify(results._embedded.events[i]._embedded.venues[0].name);
+			var city = JSON.stringify(results._embedded.events[i]._embedded.venues[0].city.name);
+			var country = JSON.stringify(results._embedded.events[i]._embedded.venues[0].country.countryCode);
+			if (country === "US"){
+				var state = JSON.stringify(results._embedded.events[i]._embedded.venues[0].state.stateCode);
+			}else{
+				var state = country;
+			}
+			var event = JSON.stringify(results._embedded.events[i].url);
+	        
+	        //dynamically creating tags and appending return results to page    
+			var newP = $("<p>");
+			newP.append(eventName);
+			wellSection.append(newP);
 
-		var dateP = $("<p>");
-		dateP.append(date, time);
-		wellSection.append(dateP);
+			var dateP = $("<p>");
+			dateP.append(date, time);
+			wellSection.append(dateP);
 
-		var venueP = $("<p>");
-		venueP.append(venue);
-		wellSection.append(venueP);
+			var venueP = $("<p>");
+			venueP.append(venue);
+			wellSection.append(venueP);
 
-		var cityP = $("<p>");
-		cityP.append(city,state);
-		wellSection.append(cityP);
+			var cityP = $("<p>");
+			
+			cityP.append(city,state);
+			wellSection.append(cityP);
 
-		var eventsP = $("<a>");
-		eventsP.attr("<href>", event);
-		eventsP.append(event);
-		wellSection.append(eventsP);
+			var eventsP = $("<a>");
+			eventsP.attr("href", event);
+			//eventsP.append(event);
+			wellSection.append(eventsP);
 
-		//appends results to wellsection
-	$('#wellsection').append(wellSection);
-
-	}	
-		});
+			//appends results to wellsection
+			$('#wellsection').append(wellSection);
+			
+		}	
+	});
 
 	console.log("I worked");
 
 	return false;
 
-	});
+});
 
 	//clears results when the page refreshes or when a new search is performed
 	
-	$('#clearAll').on('click', function(){
+$('#clearAll').on('click', function(){
 	articleCounter = 0;
 	$("#wellsection").empty();
 });
