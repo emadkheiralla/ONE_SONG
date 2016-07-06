@@ -8,7 +8,7 @@ $('#myform').on('submit', function(){
 	// Search Term
 	var searchTerm = $('#searchterm').val().trim();
 
-	var queryURL = "http://app.ticketmaster.com/discovery/v2/events.json?apikey=" + apiKey + "&keyword="  + searchTerm + "&size=5&venueID=&city=&locale=en-us";
+	var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?apikey=" + apiKey + "&keyword="  + searchTerm + "&size=5&venueID=&city=&locale=en-us";
 	// var eventsUrl = "http://www.ticketmaster.com/search?tm_link=tm_header_search&user_input=" + searchTerm + "&q=" + searchTerm;	
 	
 	$.ajax({
