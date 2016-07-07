@@ -16,12 +16,12 @@
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
     <!-- Custom CSS -->
     <link href="css/landing-page.css" rel="stylesheet">
     <link href="css/list.css" rel="stylesheet">
-    <link href="http://glyphsearch.com/">
+    <link href="https://glyphsearch.com/">
     <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
 
@@ -178,7 +178,7 @@
              // This variable will be pre-programmed with our authentication key (the one we received when we registered)
             
             // Based on the queryTerm we will create a queryURL 
-            var artistIDQueryURL = "http://api.musixmatch.com/ws/1.1/artist.search?format=jsonp&apikey=" + authKey + "&q_artist=" + searchArtist;
+            var artistIDQueryURL = "https://api.musixmatch.com/ws/1.1/artist.search?format=jsonp&apikey=" + authKey + "&q_artist=" + searchArtist;
             $('#lyricssearch').html("");
             $.ajax({
                 url: artistIDQueryURL,
@@ -187,7 +187,7 @@
             }).done(function (artistResponse) {
                 artistID = artistResponse.message.body.artist_list[0].artist.artist_id;
                 artistName = artistResponse.message.body.artist_list[0].artist.artist_name;
-                var albumIDQueryURL = "http://api.musixmatch.com/ws/1.1/artist.albums.get?format=jsonp&apikey=" + authKey + "&artist_id=" + artistID + "&s_release_date=desc&g_album_name=1";
+                var albumIDQueryURL = "https://api.musixmatch.com/ws/1.1/artist.albums.get?format=jsonp&apikey=" + authKey + "&artist_id=" + artistID + "&s_release_date=desc&g_album_name=1";
                 $.ajax({
                     url: albumIDQueryURL,
                     method: 'GET',
@@ -256,7 +256,7 @@
         function showSongs(albumId){
             $("#rowSongs").show();
             $("#songsResultsBox").empty();
-            var trackIDQueryURL = "http://api.musixmatch.com/ws/1.1/album.tracks.get?format=jsonp&apikey=" + authKey + "&album_id=" + albumId; // i changed albumID(array) to albumId(parameter of function)
+            var trackIDQueryURL = "https://api.musixmatch.com/ws/1.1/album.tracks.get?format=jsonp&apikey=" + authKey + "&album_id=" + albumId; // i changed albumID(array) to albumId(parameter of function)
             $.ajax({
                 url: trackIDQueryURL,
                 method: 'GET',
@@ -279,7 +279,7 @@
             
             $("#rowLyrics").show();
             $("#lyricsResultsBox").empty();
-            var lyricsIDQueryURL = "http://api.musixmatch.com/ws/1.1/track.lyrics.get?format=jsonp&apikey=" + authKey + "&track_id=" + trackID;
+            var lyricsIDQueryURL = "https://api.musixmatch.com/ws/1.1/track.lyrics.get?format=jsonp&apikey=" + authKey + "&track_id=" + trackID;
 
                                
             $.ajax({
