@@ -256,7 +256,7 @@
         function showSongs(albumId){
             $("#rowSongs").show();
             $("#songsResultsBox").empty();
-            var trackIDQueryURL = "http://api.musixmatch.com/ws/1.1/album.tracks.get?format=jsonp&apikey=" + authKey + "&album_id=" + albumId; // i changed albumID(array) to albumId(parameter of function)
+            var trackIDQueryURL = "https://api.musixmatch.com/ws/1.1/album.tracks.get?format=jsonp&apikey=" + authKey + "&album_id=" + albumId; // i changed albumID(array) to albumId(parameter of function)
             $.ajax({
                 url: trackIDQueryURL,
                 method: 'GET',
